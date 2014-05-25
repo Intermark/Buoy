@@ -40,10 +40,32 @@ extern NSString * const kBUOYBeacon;
 
 #pragma mark - Start Listening
 /**
- *  Tells the listener to start listening for iBeacons with an array of proximity UUIDs to listen for.
+ *  Tells the listener to start listening for iBeacons with an array of proximity UUIDs to listen for. The default notification interval of 5 seconds is used.
  *
  *  @param proximityIds NSArray of NSUUIDs
  */
 - (void)listenForBeaconsWithProximityUUIDs:(NSArray *)proximityIds;
+
+/**
+ *  Tells the listener to start listening for iBeacons with an array of proximity UUIDs to listen for. The notification interval sets the number of seconds to wait after seeing a beacon before notifying again.
+ *
+ *  @param proximityIds NSArray
+ *  @param seconds      NSTimeInterval
+ */
+- (void)listenForBeaconsWithProximityUUIDs:(NSArray *)proximityIds notificationInterval:(NSTimeInterval)seconds;
+
+
+#pragma mark - Stop Listening
+/**
+ *  Stop listening for all iBeacon Proximity UUIDs
+ */
+- (void)stopListening;
+
+/**
+ *  Stop listening for beacons with a certain Proximity UUID
+ *
+ *  @param uuid NSUUID
+ */
+- (void)stopListeningForBeaconsWithProximityUUID:(NSUUID *)uuid;
 
 @end
