@@ -51,6 +51,15 @@ When the Listener finds an iBeacon it will broadcast a notification with that be
 }];
 ```
 
+#### Notification Interval
+
+Because iBeacons have advertising intervals that can sometimes fire 20+ times per second, you may not want to receive notifications constantly in your app. So you can set the notification interval that fires after `x` number of seconds for each beacon found. The listener keeps track of the time it sends a notification for each specific beacon, then whenever it sees that beacon again, it will check that time against the current time. The default interval is `0 seconds`.
+
+```objc
+// Set the notification interval to 5 seconds.
+[[BUOYListener defaultListener] setNotificationInterval:5];
+```
+
 #### Using the iBeacon
 
 Each `CLBeacon` object has a few properties that you can key off to handle internal logic specific for your app.
