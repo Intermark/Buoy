@@ -23,7 +23,6 @@
     
     [[BUOYListener defaultListener] listenForBeaconsWithProximityUUIDs:uuids];
     
-    __weak typeof(self) wSelf = self;
     [[NSNotificationCenter defaultCenter] addObserverForName:kBUOYDidFindBeaconNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
         if (note.userInfo[kBUOYBeacon]) {
             CLBeacon *beacon = note.userInfo[kBUOYBeacon];

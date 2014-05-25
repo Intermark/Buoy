@@ -25,7 +25,7 @@
 NSString * const kBUOYBeaconRangeIdentifier = @"com.BUOYBeacon.Region";
 NSString * const kBUOYDidFindBeaconNotification = @"kBUOYDidFindBeaconNotification";
 NSString * const kBUOYBeacon = @"kBUOYBeacon";
-NSTimeInterval const kBUOYDefaultTimeInterval = 5;
+NSTimeInterval const kBUOYDefaultTimeInterval = 0;
 
 
 // Interface
@@ -113,12 +113,13 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 5;
 - (void)sendNotificationWithBeacon:(CLBeacon *)beacon {
     if ([self shouldSendNotificationForBeacon:beacon]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:kBUOYDidFindBeaconNotification object:nil userInfo:@{kBUOYBeacon:beacon}];
+        [self addBeaconToSeenBeaconsDictionary:beacon];
     }
 }
 
 - (BOOL)shouldSendNotificationForBeacon:(CLBeacon *)beacon {
     if (self.seenBeacons[[self keyForBeacon:beacon]]) {
-        return abs([[NSDate date] timeIntervalSinceDate:self.seenBeacons[[self keyForBeacon:beacon]]]) > self.notificationInterval;
+        return abs([[NSDate date] timeIntervalSinceDate:self.seenBeacons[[self keyForBeacon:beacon]]]) >= self.notificationInterval;
     }
     
     return YES;
