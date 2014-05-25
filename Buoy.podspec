@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name         = 'Buoy'
-  s.version      = '0.0.1'
+  s.version      = '0.0.2'
   s.summary      = 'An iBeacon Listener/Manager class to make your life simpler, matey.'
   s.author = {
     'Ben Gordon' => 'brgordon@ua.edu'
   }
   s.source = {
     :git => 'https://github.com/intermark/Buoy.git',
-    :tag => '0.0.1'
+    :tag => s.version
   }
   s.homepage    = 'https://github.com/intermark'
   s.license     = 'LICENSE.md'
