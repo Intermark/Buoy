@@ -4,7 +4,7 @@
 
 **Buoy** is a simple iBeacon listener/manager that handles all of the hard stuff for you, matey!
 
-## Requirements
+#### Requirements
 
 * iOS 7+
 
@@ -53,14 +53,29 @@ When the Listener finds an iBeacon it will broadcast a notification with that be
 
 #### Notification Interval
 
-Because iBeacons have advertising intervals that can sometimes fire 20+ times per second, you may not want to receive notifications constantly in your app. So you can set the notification interval that fires after `x` number of seconds for each beacon found. The listener keeps track of the time it sends a notification for each specific beacon, then whenever it sees that beacon again, it will check that time against the current time. The default interval is `0 seconds`.
+Because iBeacons have advertising intervals that can sometimes fire 20+ times per second, you may not want to receive notifications constantly in your app. So you can set the notification interval that fires after `x` number of seconds for each beacon found. The listener keeps track of the time it sends a notification for each specific beacon, then whenever it sees that beacon again, it will check that time against the current time then send a new notification if necessary.
+
+The default interval is `0 seconds`.
 
 ```objc
 // Set the notification interval to 5 seconds.
 [[BUOYListener defaultListener] setNotificationInterval:5];
 ```
 
-#### Using the iBeacon
+#### Stop Listening
+
+If, for any reason, you'd like to stop listening, there are a couple methods which can handle doing this.
+
+```objc
+// Stop listening to one Proximity UUID
+NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"00000000-0000-0000-0000-000000000000"];
+[[BUOYListener defaultListener] stopListeningForBeaconsWithProximityUUID:uuid];
+
+// Stop listening to all Proximity UUIDs
+[[BUOYListener defaultListener] stopListening];
+```
+
+#### Buoy CLBeacon Methods
 
 Each `CLBeacon` object has a few properties that you can key off to handle internal logic specific for your app.
 
@@ -70,8 +85,6 @@ Each `CLBeacon` object has a few properties that you can key off to handle inter
 * `accuracy` - CLLocationAccuracy (meters)
 * `proximity` - CLProximity (enum)
 * `rssi` - NSInteger (dB of signal strength)
-
-#### Buoy CLBeacon Methods
 
 Beyond these base properties, the included `CLBeacon+Buoy.{h,m}` category class has some included methods to make your life a little easier as well.
 
