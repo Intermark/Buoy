@@ -76,9 +76,11 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 0;
     for (NSUUID *proximityId in proximityIds) {
         // Create the beacon region to be monitored.
         CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityId identifier:kBUOYBeaconRangeIdentifier];
+        beaconRegion.notifyEntryStateOnDisplay = YES;
         
         // Register the beacon region with the location manager.
         [self.locationManager startMonitoringForRegion:beaconRegion];
+        [self.locationManager requestStateForRegion:beaconRegion];
         [self.beaconRegions setObject:beaconRegion forKey:proximityId.UUIDString];
     }
 }

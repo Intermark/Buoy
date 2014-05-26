@@ -108,6 +108,25 @@ NSString *M = [someBeacon majorString];
 NSString *m = [someBeacon minorString];
 ```
 
+## Turn your iPhone/iPad into an iBeacon
+
+Beyond just listening, Buoy can turn your iPhone into an iBeacon as well. To begin, you need to call a method on the other singleton included in Buoy, `[BUOYDevice deviceBeacon]`.
+
+```objc
+[[BUOYDevice deviceBeacon] setWithProximityUUID:[NSUUID UUID]
+                                          major:@10001
+                                          minor:@69
+                                     identifier:@"com.someIdentifier.Id"];
+```
+
+This sets up the properties necessary for an iBeacon, but does not start transmitting anything. You just need to call the following method when you're ready to transmit.
+
+`[[BUOYDevice deviceBeacon] startTransmitting]`
+
+And then when you're ready to stop transmitting, you just call the opposite.
+
+`[[BUOYDevice deviceBeacon] stopTransmitting]`
+
 ## License
 
 This project is licensed under the standard MIT License, which can be found [here](/LICENSE.md)

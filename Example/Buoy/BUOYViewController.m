@@ -8,6 +8,9 @@
 
 #import "BUOYViewController.h"
 #import "BUOYListener.h"
+#import "BUOYDevice.h"
+
+NSString * const kDemoUUIDString = @"A172A1F0-E28C-11E3-8B68-0800200C9A66";
 
 @interface BUOYViewController ()
 
@@ -19,8 +22,10 @@
 {
     [super viewDidLoad];
 	
-    NSArray *uuids = @[[[NSUUID alloc] initWithUUIDString:@"A172A1F0-E28C-11E3-8B68-0800200C9A66"]];
+    NSArray *uuids = @[[[NSUUID alloc] initWithUUIDString:kDemoUUIDString]];
     
+    
+    // Listen for iBeacons
     [[BUOYListener defaultListener] listenForBeaconsWithProximityUUIDs:uuids];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:kBUOYDidFindBeaconNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
@@ -29,6 +34,14 @@
             NSLog(@"%@", [beacon accuracyStringWithDistanceType:kBuoyDistanceTypeFeet]);
         }
     }];
+    
+    
+    // Transmit as iBeacon
+    [[BUOYDevice deviceBeacon] setWithProximityUUID:[[NSUUID alloc] initWithUUIDString:kDemoUUIDString]
+                                              major:@10001
+                                              minor:@69
+                                         identifier:nil];
+    [[BUOYDevice deviceBeacon] startTransmitting];
 }
 
 - (void)didReceiveMemoryWarning
