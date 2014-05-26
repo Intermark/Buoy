@@ -56,4 +56,10 @@
     return [NSString stringWithFormat:@"%@", self.minor];
 }
 
+
+#pragma mark - Key for BUOY
+- (NSString *)buoyIdentifier {
+    return [NSString stringWithFormat:@"Buoy:%@:%@:%@", self.proximityUUID, self.major, self.minor];
+}
+
 @end

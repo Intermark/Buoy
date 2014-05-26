@@ -53,4 +53,13 @@ typedef NS_ENUM(NSInteger, kBuoyDistanceType) {
  */
 - (NSString *)minorString;
 
+
+#pragma mark - Key for BUOY
+/**
+ *  Returns the identifier used by the BUOYListener to handle notifications/dates for each beacon.
+ *
+ *  @return NSString
+ */
+- (NSString *)buoyIdentifier;
+
 @end

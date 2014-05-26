@@ -31,7 +31,7 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 0;
 // Interface
 @interface BUOYListener() <CLLocationManagerDelegate>
 @property (nonatomic, strong) CLLocationManager *locationManager;
-@property (nonatomic, strong) NSArray *beaconRegions;
+@property (nonatomic, strong) NSMutableDictionary *beaconRegions;
 
 // Listening
 @property (nonatomic) BOOL isListening;
@@ -62,6 +62,8 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 0;
         [self.locationManager setDelegate:self];
         [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
         self.notificationInterval = kBUOYDefaultTimeInterval;
+        self.beaconRegions = [NSMutableDictionary dictionary];
+        self.seenBeacons = [NSMutableDictionary dictionary];
     }
     
     return self;
@@ -71,17 +73,14 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 0;
 #pragma mark - Start/Stop Listening
 - (void)listenForBeaconsWithProximityUUIDs:(NSArray *)proximityIds {
     // Register for region monitoring
-    NSMutableArray *beaconRegions = [NSMutableArray array];
     for (NSUUID *proximityId in proximityIds) {
         // Create the beacon region to be monitored.
         CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityId identifier:kBUOYBeaconRangeIdentifier];
         
         // Register the beacon region with the location manager.
         [self.locationManager startMonitoringForRegion:beaconRegion];
-        [beaconRegions addObject:beaconRegion];
+        [self.beaconRegions setObject:beaconRegion forKey:proximityId.UUIDString];
     }
-    
-    self.beaconRegions = beaconRegions;
 }
 
 - (void)listenForBeaconsWithProximityUUIDs:(NSArray *)proximityIds notificationInterval:(NSTimeInterval)seconds {
@@ -96,11 +95,9 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 0;
 }
 
 - (void)stopListeningForBeaconsWithProximityUUID:(NSUUID *)uuid {
-    for (CLBeaconRegion *region in self.beaconRegions) {
-        if ([region.proximityUUID isEqual:uuid]) {
-            [self.locationManager stopMonitoringForRegion:region];
-            break;
-        }
+    if (self.beaconRegions[uuid.UUIDString]) {
+        [self.locationManager stopMonitoringForRegion:self.beaconRegions[uuid.UUIDString]];
+        [self.beaconRegions removeObjectForKey:uuid.UUIDString];
     }
 }
 
@@ -118,19 +115,15 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 0;
 }
 
 - (BOOL)shouldSendNotificationForBeacon:(CLBeacon *)beacon {
-    if (self.seenBeacons[[self keyForBeacon:beacon]]) {
-        return abs([[NSDate date] timeIntervalSinceDate:self.seenBeacons[[self keyForBeacon:beacon]]]) >= self.notificationInterval;
+    if (self.seenBeacons[[beacon buoyIdentifier]]) {
+        return abs([[NSDate date] timeIntervalSinceDate:self.seenBeacons[[beacon buoyIdentifier]]]) >= self.notificationInterval;
     }
     
     return YES;
 }
 
-- (NSString *)keyForBeacon:(CLBeacon *)beacon {
-    return [NSString stringWithFormat:@"Buoy:%@:%@:%@", beacon.proximityUUID, beacon.major, beacon.minor];
-}
-
 - (void)addBeaconToSeenBeaconsDictionary:(CLBeacon *)beacon {
-    [self.seenBeacons setObject:[NSDate date] forKey:[self keyForBeacon:beacon]];
+    [self.seenBeacons setObject:[NSDate date] forKey:[beacon buoyIdentifier]];
 }
 
 
