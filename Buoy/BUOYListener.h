@@ -68,4 +68,13 @@ extern NSString * const kBUOYBeacon;
  */
 - (void)stopListeningForBeaconsWithProximityUUID:(NSUUID *)uuid;
 
+
+#pragma mark - Notification
+/**
+ *  Sets the notification interval duration for how often the Listener should update the app about each new beacon found.
+ *
+ *  @param seconds NSTimeInterval
+ */
+- (void)setNotificationInterval:(NSTimeInterval)seconds;
+
 @end

@@ -35,7 +35,7 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 0;
 
 // Listening
 @property (nonatomic) BOOL isListening;
-@property (nonatomic) NSTimeInterval notificationInterval;
+@property (nonatomic) NSTimeInterval beaconInterval;
 @property (nonatomic, strong) NSMutableDictionary *seenBeacons;
 @end
 
@@ -61,7 +61,7 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 0;
         self.locationManager = [[CLLocationManager alloc] init];
         [self.locationManager setDelegate:self];
         [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-        self.notificationInterval = kBUOYDefaultTimeInterval;
+        self.beaconInterval = kBUOYDefaultTimeInterval;
         self.beaconRegions = [NSMutableDictionary dictionary];
         self.seenBeacons = [NSMutableDictionary dictionary];
     }
@@ -84,7 +84,7 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 0;
 }
 
 - (void)listenForBeaconsWithProximityUUIDs:(NSArray *)proximityIds notificationInterval:(NSTimeInterval)seconds {
-    self.notificationInterval = seconds;
+    self.beaconInterval = seconds;
     [self listenForBeaconsWithProximityUUIDs:proximityIds];
 }
 
@@ -104,7 +104,7 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 0;
 
 #pragma mark - Notifications
 - (void)setNotificationInterval:(NSTimeInterval)seconds {
-    self.notificationInterval = seconds;
+    self.beaconInterval = seconds;
 }
 
 - (void)sendNotificationWithBeacon:(CLBeacon *)beacon {
@@ -116,7 +116,7 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 0;
 
 - (BOOL)shouldSendNotificationForBeacon:(CLBeacon *)beacon {
     if (self.seenBeacons[[beacon buoyIdentifier]]) {
-        return abs([[NSDate date] timeIntervalSinceDate:self.seenBeacons[[beacon buoyIdentifier]]]) >= self.notificationInterval;
+        return abs([[NSDate date] timeIntervalSinceDate:self.seenBeacons[[beacon buoyIdentifier]]]) >= self.beaconInterval;
     }
     
     return YES;
