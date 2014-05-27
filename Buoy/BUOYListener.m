@@ -25,7 +25,7 @@
 NSString * const kBUOYBeaconRangeIdentifier = @"com.BUOYBeacon.Region";
 NSString * const kBUOYDidFindBeaconNotification = @"kBUOYDidFindBeaconNotification";
 NSString * const kBUOYBeacon = @"kBUOYBeacon";
-NSTimeInterval const kBUOYDefaultTimeInterval = 0;
+NSTimeInterval const kBUOYDefaultTimeInterval = 10;
 
 
 // Interface
@@ -74,7 +74,7 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 0;
 - (void)listenForBeaconsWithProximityUUIDs:(NSArray *)proximityIds {
     // Register for region monitoring
     for (NSUUID *proximityId in proximityIds) {
-        // Create the beacon region to be monitored.
+        // Create the beacon region tohv be monitored.
         CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityId identifier:kBUOYBeaconRangeIdentifier];
         beaconRegion.notifyEntryStateOnDisplay = YES;
         
@@ -111,8 +111,8 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 0;
 
 - (void)sendNotificationWithBeacon:(CLBeacon *)beacon {
     if ([self shouldSendNotificationForBeacon:beacon]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kBUOYDidFindBeaconNotification object:nil userInfo:@{kBUOYBeacon:beacon}];
         [self addBeaconToSeenBeaconsDictionary:beacon];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kBUOYDidFindBeaconNotification object:nil userInfo:@{kBUOYBeacon:beacon}];
     }
 }
 
@@ -137,9 +137,12 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 0;
     }
 }
 
-- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
-    if ([region isKindOfClass:[CLBeaconRegion class]]) {
+- (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region {
+    if ([region isKindOfClass:[CLBeaconRegion class]] && state == CLRegionStateInside) {
         [self.locationManager startRangingBeaconsInRegion:(CLBeaconRegion *)region];
+    }
+    else if ([region isKindOfClass:[CLBeaconRegion class]] && state == CLRegionStateOutside) {
+        [self.locationManager stopRangingBeaconsInRegion:(CLBeaconRegion *)region];
     }
 }
 

@@ -59,7 +59,7 @@
 
 #pragma mark - Key for BUOY
 - (NSString *)buoyIdentifier {
-    return [NSString stringWithFormat:@"Buoy:%@:%@:%@", self.proximityUUID, self.major, self.minor];
+    return [NSString stringWithFormat:@"Buoy:%@:%@:%@", self.proximityUUID.UUIDString, self.major, self.minor];
 }
 
 @end
