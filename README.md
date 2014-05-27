@@ -14,6 +14,17 @@ Use [Cocoapods](http://www.cocoapods.org) to install Buoy.
 
 `pod 'Buoy'`
 
+## Table of Contents
+
+* [Listen for iBeacons](#listen-for-ibeacons)
+  * [Set Up](#set-up)
+  * [Handle Finding iBeacons](#handle-finding-ibeacons)
+  * [Notification Interval](#notification-interval)
+  * [Stop Listening](#stop-listening)
+  * [Buoy CLBeacon Methods](#buoy-clbeacon-methods)
+* [Turn your iPhone/iPad into an iBeacon](#turn-your-iphoneipad-into-an-ibeacon)
+* [License](#license)
+
 ## Listen for iBeacons
 
 To begin, `#import <BUOYListener.h>` in the classes you want to use the Listener and it's notifications in. Buoy works by listening for iBeacons and broadcasting NSNotifications through the `[NSNotificationCenter defaultCenter]` so any of your classes can key in on these and do something with the data.
