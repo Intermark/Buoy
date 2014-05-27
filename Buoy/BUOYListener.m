@@ -25,7 +25,7 @@
 NSString * const kBUOYBeaconRangeIdentifier = @"com.BUOYBeacon.Region";
 NSString * const kBUOYDidFindBeaconNotification = @"kBUOYDidFindBeaconNotification";
 NSString * const kBUOYBeacon = @"kBUOYBeacon";
-NSTimeInterval const kBUOYDefaultTimeInterval = 10;
+NSTimeInterval const kBUOYDefaultTimeInterval = 0;
 
 
 // Interface
