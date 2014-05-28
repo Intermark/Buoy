@@ -21,10 +21,10 @@
 
 #import <CoreLocation/CoreLocation.h>
 
-typedef NS_ENUM(NSInteger, kBuoyDistanceType) {
-    kBuoyDistanceTypeMeters,
-    kBuoyDistanceTypeFeet,
-    kBuoyDistanceTypeYards
+typedef NS_ENUM(NSInteger, kBuoyUnitType) {
+    kBuoyUnitTypeMeters,
+    kBuoyUnitTypeFeet,
+    kBuoyUnitTypeYards
 };
 
 @interface CLBeacon (Buoy)
@@ -33,11 +33,11 @@ typedef NS_ENUM(NSInteger, kBuoyDistanceType) {
 /**
  *  Returns a string formatted like so: 0.5 m or 1.64 ft
  *
- *  @param type kBuoyDistanceType
+ *  @param type kBuoyUnitType
  *
  *  @return NSString
  */
-- (NSString *)accuracyStringWithDistanceType:(kBuoyDistanceType)type;
+- (NSString *)accuracyStringWithUnitType:(kBuoyUnitType)type;
 
 /**
  *  Returns the major number in string format.
@@ -58,11 +58,11 @@ typedef NS_ENUM(NSInteger, kBuoyDistanceType) {
 /**
  *  Returns the accuracy of the beacon using a given unit type.
  *
- *  @param type kBuoyDistanceType
+ *  @param type kBuoyUnitType
  *
  *  @return CGFloat
  */
-- (CGFloat)accuracyWithDistanceType:(kBuoyDistanceType)type;
+- (CGFloat)accuracyWithUnitType:(kBuoyUnitType)type;
 
 
 #pragma mark - Key for BUOY

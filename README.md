@@ -103,14 +103,14 @@ Beyond these base properties, the included `CLBeacon+Buoy.{h,m}` category class 
 
 ```objc
 CLBeacon *someBeacon;
-NSString *accuracy = [someBeacon accuracyStringWithDistanceType:kBuoyDistanceTypeFeet];
+NSString *accuracy = [someBeacon accuracyStringWithDistanceType:kBuoyUnitTypeFeet];
 ```
 
-This uses the following enum for `kBuoyDistanceType`
+This uses the following enum for `kBuoyUnitType`
 
-* `kBuoyDistanceTypeMeters`
-* `kBuoyDistanceTypeFeet`
-* `kBuoyDistanceTypeYards`
+* `kBuoyUnitTypeMeters`
+* `kBuoyUnitTypeFeet`
+* `kBuoyUnitTypeYards`
 
 **Major/Minor**
 

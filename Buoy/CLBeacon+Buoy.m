@@ -21,29 +21,23 @@
 
 #import "CLBeacon+Buoy.h"
 
+NSString * const kBuoyDistanceString[] = {
+    [kBuoyUnitTypeFeet] = @"ft",
+    [kBuoyUnitTypeMeters] = @"m",
+    [kBuoyUnitTypeYards] = @"yd",
+};
+
+CGFloat const kBuoyDistanceModifier[] = {
+    [kBuoyUnitTypeFeet] = 3.28084f,
+    [kBuoyUnitTypeMeters] = 1.0f,
+    [kBuoyUnitTypeYards] = 1.09361f,
+};
+
 @implementation CLBeacon (Buoy)
 
 #pragma mark - String Formats
-- (NSString *)accuracyStringWithDistanceType:(kBuoyDistanceType)type {
-    // Create Values
-    NSString *unitString = @"";
-
-    switch (type) {
-        case kBuoyDistanceTypeMeters:
-            unitString = @"m";
-            break;
-        case kBuoyDistanceTypeFeet:
-            unitString = @"ft";
-            break;
-        case kBuoyDistanceTypeYards:
-            unitString = @"yd";
-            break;
-        default:
-            break;
-    }
-    
-    // Create Distance
-    return self.accuracy >= 0 ? [NSString stringWithFormat:@"%0.2f %@", [self accuracyWithDistanceType:type], unitString] : @"N/A";
+- (NSString *)accuracyStringWithUnitType:(kBuoyUnitType)type {
+    return self.accuracy >= 0 ? [NSString stringWithFormat:@"%0.2f %@", [self accuracyWithUnitType:type], kBuoyDistanceString[type]] : @"N/A";
 }
 
 - (NSString *)majorString {
@@ -56,20 +50,8 @@
 
 
 #pragma mark - Distance Float
-- (CGFloat)accuracyWithDistanceType:(kBuoyDistanceType)type {
-    CGFloat distanceModifier = 1.0f;
-    switch (type) {
-        case kBuoyDistanceTypeFeet:
-            distanceModifier = 3.28084f;
-            break;
-        case kBuoyDistanceTypeYards:
-            distanceModifier = 1.09361f;
-            break;
-        default:
-            break;
-    }
-    
-    return self.accuracy*distanceModifier;
+- (CGFloat)accuracyWithUnitType:(kBuoyUnitType)type {
+    return self.accuracy * kBuoyDistanceModifier[type];
 }
 
 

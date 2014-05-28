@@ -30,7 +30,7 @@ NSString * const kDemoUUIDString = @"A172A1F0-E28C-11E3-8B68-0800200C9A66";
     [[NSNotificationCenter defaultCenter] addObserverForName:kBUOYDidFindBeaconNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
         if (note.userInfo[kBUOYBeacon]) {
             CLBeacon *beacon = note.userInfo[kBUOYBeacon];
-            NSLog(@"%@", [beacon accuracyStringWithDistanceType:kBuoyDistanceTypeFeet]);
+            NSLog(@"%@", [beacon accuracyStringWithUnitType:kBuoyUnitTypeFeet]);
         }
     }];
     
