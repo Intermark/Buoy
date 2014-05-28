@@ -54,6 +54,17 @@ typedef NS_ENUM(NSInteger, kBuoyDistanceType) {
 - (NSString *)minorString;
 
 
+#pragma mark - Distance Float
+/**
+ *  Returns the accuracy of the beacon using a given unit type.
+ *
+ *  @param type kBuoyDistanceType
+ *
+ *  @return CGFloat
+ */
+- (CGFloat)accuracyWithDistanceType:(kBuoyDistanceType)type;
+
+
 #pragma mark - Key for BUOY
 /**
  *  Returns the identifier used by the BUOYListener to handle notifications/dates for each beacon.

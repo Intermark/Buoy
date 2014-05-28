@@ -27,33 +27,49 @@
 - (NSString *)accuracyStringWithDistanceType:(kBuoyDistanceType)type {
     // Create Values
     NSString *unitString = @"";
-    CGFloat distanceModifier = 1.0f;
+
     switch (type) {
         case kBuoyDistanceTypeMeters:
             unitString = @"m";
             break;
         case kBuoyDistanceTypeFeet:
             unitString = @"ft";
-            distanceModifier = 3.28084f;
             break;
         case kBuoyDistanceTypeYards:
             unitString = @"yd";
-            distanceModifier = 1.09361f;
             break;
         default:
             break;
     }
     
     // Create Distance
-    return self.accuracy >= 0 ? [NSString stringWithFormat:@"%0.2f %@", self.accuracy*distanceModifier, unitString] : @"N/A";
+    return self.accuracy >= 0 ? [NSString stringWithFormat:@"%0.2f %@", [self accuracyWithDistanceType:type], unitString] : @"N/A";
 }
 
 - (NSString *)majorString {
-    return [NSString stringWithFormat:@"%@", self.major];
+    return [self.major stringValue];
 }
 
 - (NSString *)minorString {
-    return [NSString stringWithFormat:@"%@", self.minor];
+    return [self.minor stringValue];
+}
+
+
+#pragma mark - Distance Float
+- (CGFloat)accuracyWithDistanceType:(kBuoyDistanceType)type {
+    CGFloat distanceModifier = 1.0f;
+    switch (type) {
+        case kBuoyDistanceTypeFeet:
+            distanceModifier = 3.28084f;
+            break;
+        case kBuoyDistanceTypeYards:
+            distanceModifier = 1.09361f;
+            break;
+        default:
+            break;
+    }
+    
+    return self.accuracy*distanceModifier;
 }
 
 

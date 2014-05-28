@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'Buoy'
-  s.version      = '0.0.7'
+  s.version      = '0.0.8'
   s.summary      = 'An iBeacon Listener/Manager class to make your life simpler, matey.'
   s.author = {
     'Ben Gordon' => 'brgordon@ua.edu'
@@ -14,4 +14,6 @@ Pod::Spec.new do |s|
   s.source_files = 'Buoy/*.{h,m}'
   s.ios.deployment_target = '7.0'
   s.requires_arc = true
+  s.framework    = 'CoreBluetooth'
+  s.framework    = 'CoreLocation'
 end

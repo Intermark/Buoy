@@ -27,7 +27,7 @@ Use [Cocoapods](http://www.cocoapods.org) to install Buoy.
 
 ## Listen for iBeacons
 
-To begin, `#import <BUOYListener.h>` in the classes you want to use the Listener and it's notifications in. Buoy works by listening for iBeacons and broadcasting NSNotifications through the `[NSNotificationCenter defaultCenter]` so any of your classes can key in on these and do something with the data.
+To begin, `#import <BUOY.h>` in the classes you want to use the Listener and it's notifications in. Buoy works by listening for iBeacons and broadcasting NSNotifications through the `[NSNotificationCenter defaultCenter]` so any of your classes can key in on these and do something with the data.
 
 #### Set Up
 
@@ -121,10 +121,10 @@ NSString *m = [someBeacon minorString];
 
 ## Turn your iPhone/iPad into an iBeacon
 
-Beyond just listening, Buoy can turn your iPhone into an iBeacon as well. To begin, you need to call a method on the other singleton included in Buoy, `[BUOYDevice deviceBeacon]`.
+Beyond just listening, Buoy can turn your iPhone into an iBeacon as well. To begin, you need to call a method on the other singleton included in Buoy, `[BUOYBeacon deviceBeacon]`.
 
 ```objc
-[[BUOYDevice deviceBeacon] setWithProximityUUID:[NSUUID UUID]
+[[BUOYBeacon deviceBeacon] setWithProximityUUID:[NSUUID UUID]
                                           major:@10001
                                           minor:@69
                                      identifier:@"com.someIdentifier.Id"];
@@ -132,11 +132,11 @@ Beyond just listening, Buoy can turn your iPhone into an iBeacon as well. To beg
 
 This sets up the properties necessary for an iBeacon, but does not start transmitting anything. You just need to call the following method when you're ready to transmit.
 
-`[[BUOYDevice deviceBeacon] startTransmitting]`
+`[[BUOYBeacon deviceBeacon] startTransmitting]`
 
 And then when you're ready to stop transmitting, you just call the opposite.
 
-`[[BUOYDevice deviceBeacon] stopTransmitting]`
+`[[BUOYBeacon deviceBeacon] stopTransmitting]`
 
 ## License
 

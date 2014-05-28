@@ -24,7 +24,7 @@
 		B6C05098192FA52400B6F14F /* BUOYListener.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C05097192FA52400B6F14F /* BUOYListener.m */; };
 		B6C0509A192FA59600B6F14F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C05099192FA59600B6F14F /* CoreLocation.framework */; };
 		B6C0509D192FC45200B6F14F /* CLBeacon+Buoy.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C0509C192FC45200B6F14F /* CLBeacon+Buoy.m */; };
-		B6C050A01933A7FA00B6F14F /* BUOYDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C0509F1933A7FA00B6F14F /* BUOYDevice.m */; };
+		B6C050A01933A7FA00B6F14F /* BUOYBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C0509F1933A7FA00B6F14F /* BUOYBeacon.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,8 +62,9 @@
 		B6C05099192FA59600B6F14F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B6C0509B192FC45200B6F14F /* CLBeacon+Buoy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CLBeacon+Buoy.h"; path = "../../Buoy/CLBeacon+Buoy.h"; sourceTree = "<group>"; };
 		B6C0509C192FC45200B6F14F /* CLBeacon+Buoy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CLBeacon+Buoy.m"; path = "../../Buoy/CLBeacon+Buoy.m"; sourceTree = "<group>"; };
-		B6C0509E1933A7FA00B6F14F /* BUOYDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUOYDevice.h; path = ../../Buoy/BUOYDevice.h; sourceTree = "<group>"; };
-		B6C0509F1933A7FA00B6F14F /* BUOYDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUOYDevice.m; path = ../../Buoy/BUOYDevice.m; sourceTree = "<group>"; };
+		B6C0509E1933A7FA00B6F14F /* BUOYBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUOYBeacon.h; path = ../../Buoy/BUOYBeacon.h; sourceTree = "<group>"; };
+		B6C0509F1933A7FA00B6F14F /* BUOYBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUOYBeacon.m; path = ../../Buoy/BUOYBeacon.m; sourceTree = "<group>"; };
+		B6C0514E19365B8F00B6F14F /* BUOY.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BUOY.h; path = ../../Buoy/BUOY.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,8 +174,9 @@
 				B6C05097192FA52400B6F14F /* BUOYListener.m */,
 				B6C0509B192FC45200B6F14F /* CLBeacon+Buoy.h */,
 				B6C0509C192FC45200B6F14F /* CLBeacon+Buoy.m */,
-				B6C0509E1933A7FA00B6F14F /* BUOYDevice.h */,
-				B6C0509F1933A7FA00B6F14F /* BUOYDevice.m */,
+				B6C0509E1933A7FA00B6F14F /* BUOYBeacon.h */,
+				B6C0509F1933A7FA00B6F14F /* BUOYBeacon.m */,
+				B6C0514E19365B8F00B6F14F /* BUOY.h */,
 			);
 			name = "Buoy Classes";
 			sourceTree = "<group>";
@@ -277,7 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6C050A01933A7FA00B6F14F /* BUOYDevice.m in Sources */,
+				B6C050A01933A7FA00B6F14F /* BUOYBeacon.m in Sources */,
 				B6C0506D192FA34400B6F14F /* main.m in Sources */,
 				B6C05077192FA34400B6F14F /* BUOYViewController.m in Sources */,
 				B6C05098192FA52400B6F14F /* BUOYListener.m in Sources */,
