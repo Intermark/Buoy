@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B68E16A5193EB9660083D1EA /* BUOYBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = B68E16A0193EB9660083D1EA /* BUOYBeacon.m */; };
+		B68E16A6193EB9660083D1EA /* BUOYListener.m in Sources */ = {isa = PBXBuildFile; fileRef = B68E16A2193EB9660083D1EA /* BUOYListener.m */; };
+		B68E16A7193EB9660083D1EA /* CLBeacon+Buoy.m in Sources */ = {isa = PBXBuildFile; fileRef = B68E16A4193EB9660083D1EA /* CLBeacon+Buoy.m */; };
 		B6C05061192FA34400B6F14F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C05060192FA34400B6F14F /* Foundation.framework */; };
 		B6C05063192FA34400B6F14F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C05062192FA34400B6F14F /* CoreGraphics.framework */; };
 		B6C05065192FA34400B6F14F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C05064192FA34400B6F14F /* UIKit.framework */; };
@@ -21,10 +24,7 @@
 		B6C05082192FA34400B6F14F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C05064192FA34400B6F14F /* UIKit.framework */; };
 		B6C0508A192FA34400B6F14F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B6C05088192FA34400B6F14F /* InfoPlist.strings */; };
 		B6C0508C192FA34400B6F14F /* BuoyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C0508B192FA34400B6F14F /* BuoyTests.m */; };
-		B6C05098192FA52400B6F14F /* BUOYListener.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C05097192FA52400B6F14F /* BUOYListener.m */; };
 		B6C0509A192FA59600B6F14F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C05099192FA59600B6F14F /* CoreLocation.framework */; };
-		B6C0509D192FC45200B6F14F /* CLBeacon+Buoy.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C0509C192FC45200B6F14F /* CLBeacon+Buoy.m */; };
-		B6C050A01933A7FA00B6F14F /* BUOYBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C0509F1933A7FA00B6F14F /* BUOYBeacon.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +38,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B68E169E193EB9660083D1EA /* BUOY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUOY.h; path = ../../../Buoy/ObjC/BUOY.h; sourceTree = "<group>"; };
+		B68E169F193EB9660083D1EA /* BUOYBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUOYBeacon.h; path = ../../../Buoy/ObjC/BUOYBeacon.h; sourceTree = "<group>"; };
+		B68E16A0193EB9660083D1EA /* BUOYBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUOYBeacon.m; path = ../../../Buoy/ObjC/BUOYBeacon.m; sourceTree = "<group>"; };
+		B68E16A1193EB9660083D1EA /* BUOYListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUOYListener.h; path = ../../../Buoy/ObjC/BUOYListener.h; sourceTree = "<group>"; };
+		B68E16A2193EB9660083D1EA /* BUOYListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUOYListener.m; path = ../../../Buoy/ObjC/BUOYListener.m; sourceTree = "<group>"; };
+		B68E16A3193EB9660083D1EA /* CLBeacon+Buoy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CLBeacon+Buoy.h"; path = "../../../Buoy/ObjC/CLBeacon+Buoy.h"; sourceTree = "<group>"; };
+		B68E16A4193EB9660083D1EA /* CLBeacon+Buoy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CLBeacon+Buoy.m"; path = "../../../Buoy/ObjC/CLBeacon+Buoy.m"; sourceTree = "<group>"; };
 		B6C0505D192FA34400B6F14F /* Buoy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Buoy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C05060192FA34400B6F14F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B6C05062192FA34400B6F14F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -57,14 +64,7 @@
 		B6C05087192FA34400B6F14F /* BuoyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BuoyTests-Info.plist"; sourceTree = "<group>"; };
 		B6C05089192FA34400B6F14F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B6C0508B192FA34400B6F14F /* BuoyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuoyTests.m; sourceTree = "<group>"; };
-		B6C05096192FA52400B6F14F /* BUOYListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUOYListener.h; path = ../../Buoy/BUOYListener.h; sourceTree = "<group>"; };
-		B6C05097192FA52400B6F14F /* BUOYListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUOYListener.m; path = ../../Buoy/BUOYListener.m; sourceTree = "<group>"; };
 		B6C05099192FA59600B6F14F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		B6C0509B192FC45200B6F14F /* CLBeacon+Buoy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CLBeacon+Buoy.h"; path = "../../Buoy/CLBeacon+Buoy.h"; sourceTree = "<group>"; };
-		B6C0509C192FC45200B6F14F /* CLBeacon+Buoy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CLBeacon+Buoy.m"; path = "../../Buoy/CLBeacon+Buoy.m"; sourceTree = "<group>"; };
-		B6C0509E1933A7FA00B6F14F /* BUOYBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUOYBeacon.h; path = ../../Buoy/BUOYBeacon.h; sourceTree = "<group>"; };
-		B6C0509F1933A7FA00B6F14F /* BUOYBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUOYBeacon.m; path = ../../Buoy/BUOYBeacon.m; sourceTree = "<group>"; };
-		B6C0514E19365B8F00B6F14F /* BUOY.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BUOY.h; path = ../../Buoy/BUOY.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,13 +170,13 @@
 		B6C05095192FA34900B6F14F /* Buoy Classes */ = {
 			isa = PBXGroup;
 			children = (
-				B6C05096192FA52400B6F14F /* BUOYListener.h */,
-				B6C05097192FA52400B6F14F /* BUOYListener.m */,
-				B6C0509B192FC45200B6F14F /* CLBeacon+Buoy.h */,
-				B6C0509C192FC45200B6F14F /* CLBeacon+Buoy.m */,
-				B6C0509E1933A7FA00B6F14F /* BUOYBeacon.h */,
-				B6C0509F1933A7FA00B6F14F /* BUOYBeacon.m */,
-				B6C0514E19365B8F00B6F14F /* BUOY.h */,
+				B68E169E193EB9660083D1EA /* BUOY.h */,
+				B68E169F193EB9660083D1EA /* BUOYBeacon.h */,
+				B68E16A0193EB9660083D1EA /* BUOYBeacon.m */,
+				B68E16A1193EB9660083D1EA /* BUOYListener.h */,
+				B68E16A2193EB9660083D1EA /* BUOYListener.m */,
+				B68E16A3193EB9660083D1EA /* CLBeacon+Buoy.h */,
+				B68E16A4193EB9660083D1EA /* CLBeacon+Buoy.m */,
 			);
 			name = "Buoy Classes";
 			sourceTree = "<group>";
@@ -279,12 +279,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6C050A01933A7FA00B6F14F /* BUOYBeacon.m in Sources */,
 				B6C0506D192FA34400B6F14F /* main.m in Sources */,
 				B6C05077192FA34400B6F14F /* BUOYViewController.m in Sources */,
-				B6C05098192FA52400B6F14F /* BUOYListener.m in Sources */,
+				B68E16A5193EB9660083D1EA /* BUOYBeacon.m in Sources */,
 				B6C05071192FA34400B6F14F /* BUOYAppDelegate.m in Sources */,
-				B6C0509D192FC45200B6F14F /* CLBeacon+Buoy.m in Sources */,
+				B68E16A6193EB9660083D1EA /* BUOYListener.m in Sources */,
+				B68E16A7193EB9660083D1EA /* CLBeacon+Buoy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

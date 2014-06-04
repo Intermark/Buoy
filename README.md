@@ -23,6 +23,7 @@ Use [Cocoapods](http://www.cocoapods.org) to install Buoy.
   * [Stop Listening](#stop-listening)
   * [Buoy CLBeacon Methods](#buoy-clbeacon-methods)
 * [Turn your iPhone/iPad into an iBeacon](#turn-your-iphoneipad-into-an-ibeacon)
+* [Swift](#swift)
 * [License](#license)
 
 ## Listen for iBeacons
@@ -137,6 +138,18 @@ This sets up the properties necessary for an iBeacon, but does not start transmi
 And then when you're ready to stop transmitting, you just call the opposite.
 
 `[[BUOYBeacon deviceBeacon] stopTransmitting]`
+
+## Swift
+
+As an awesome addition, and learning tool - this code has been ported to [Swift](https://developer.apple.com/swift/). To get this code working on your device, you will need to add one key to your `Info.plist` file.
+
+```
+NSLocationAlwaysUsageDescription : "Some Description of why you want to take location"
+```
+
+This is necessary starting in iOS 8+.
+
+With that said, all of the Swift classes can be found under the [/Buoy/Swift](/Buoy/Swift) directory, and the Example project can be found under [/Examples/Buoy-Swift](/Examples/Buoy-Swift).
 
 ## License
 

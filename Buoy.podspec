@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   }
   s.homepage    = 'https://github.com/intermark'
   s.license     = 'LICENSE.md'
-  s.source_files = 'Buoy/*.{h,m}'
+  s.source_files = 'Buoy/ObjC/*.{h,m}'
   s.ios.deployment_target = '7.0'
   s.requires_arc = true
   s.framework    = 'CoreBluetooth'
