@@ -4,6 +4,8 @@
 
 **Buoy** is a simple iBeacon listener/manager that handles all of the hard stuff for you, matey!
 
+Now written in [Swift](#swift) as well!
+
 #### Requirements
 
 * iOS 7+
