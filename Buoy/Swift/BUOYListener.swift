@@ -98,7 +98,7 @@ class BUOYListener: NSObject, CLLocationManagerDelegate {
     func sendNotification(beacon: CLBeacon) {
         if self.shouldSendNotification(beacon) {
             self.addBeaconToSeenBeacons(beacon)
-            NSNotificationCenter.defaultCenter().postNotificationName(kBUOYDidFindBeaconNotification, object: nil, userInfo: [kBUOYBeacon:beacon])
+            NSNotificationCenter.defaultCenter().postNotificationName(kBUOYDidFindBeaconNotification, object:nil, userInfo:[kBUOYBeacon:beacon])
         }
     }
     
@@ -125,14 +125,11 @@ class BUOYListener: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager!, didDetermineState state: CLRegionState, forRegion region: CLRegion!) {
-        if region is CLBeaconRegion {
-            if state == CLRegionState.Inside {
-                self.manager.startRangingBeaconsInRegion(region as CLBeaconRegion)
-            }
-            else if state == CLRegionState.Outside {
-                self.manager.stopRangingBeaconsInRegion(region as CLBeaconRegion)
-            }
+        if region.isKindOfClass(CLBeaconRegion.self) && state == CLRegionState.Inside {
+            self.manager.startRangingBeaconsInRegion(region as CLBeaconRegion)
+        }
+        else if region.isKindOfClass(CLBeaconRegion.self) && state == CLRegionState.Outside {
+            self.manager.stopRangingBeaconsInRegion(region as CLBeaconRegion)
         }
     }
-    
 }

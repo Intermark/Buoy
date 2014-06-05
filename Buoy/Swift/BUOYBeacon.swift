@@ -53,7 +53,6 @@ class BUOYBeacon: NSObject, CBPeripheralManagerDelegate {
     // Set Up
     func setUpBeacon(proximityUUID uuid:NSUUID?, major M:CLBeaconMajorValue?, minor m:CLBeaconMinorValue?, identifier i:String?) {
         self.beaconRegion = CLBeaconRegion(proximityUUID: uuid ? uuid : NSUUID(), major: M!, minor: m!, identifier: i ? i : kBUOYDeviceBeaconIdentifier)
-        println("\(self.beaconRegion.proximityUUID.UUIDString)")
     }
     
     
