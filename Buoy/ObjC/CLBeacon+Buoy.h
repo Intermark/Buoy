@@ -63,7 +63,7 @@ typedef NS_ENUM(NSInteger, kBuoyUnitType) {
  *
  *  @return CGFloat
  */
-//- (CGFloat)accuracyWithUnitType:(kBuoyUnitType)type;
+- (CGFloat)accuracyWithUnitType:(kBuoyUnitType)type;
 
 
 #pragma mark - Key for BUOY
