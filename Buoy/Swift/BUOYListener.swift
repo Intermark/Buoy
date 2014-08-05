@@ -116,7 +116,7 @@ class BUOYListener: NSObject, CLLocationManagerDelegate {
     
     
     // Location Manager Delegate
-    func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: AnyObject[]!, inRegion region: CLBeaconRegion!) {
+    func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
         for beacon : AnyObject in beacons {
             if beacon is CLBeacon {
                 self.sendNotification(beacon as CLBeacon)
