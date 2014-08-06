@@ -45,7 +45,7 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 0;
 
 #pragma mark - Singleton
 + (instancetype)defaultListener {
-	static id _sharedInstance = nil;
+    static id _sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[self alloc] init];
@@ -144,8 +144,11 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 0;
     if ([region isKindOfClass:[CLBeaconRegion class]] && state == CLRegionStateInside) {
         [self.locationManager startRangingBeaconsInRegion:(CLBeaconRegion *)region];
     }
-    else if ([region isKindOfClass:[CLBeaconRegion class]] && state == CLRegionStateOutside) {
-        [self.locationManager stopRangingBeaconsInRegion:(CLBeaconRegion *)region];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
+    if ([region isKindOfClass:[CLBeaconRegion class]]) {
+        [self.locationManager startRangingBeaconsInRegion:(CLBeaconRegion *)region];
     }
 }
 
