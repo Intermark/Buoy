@@ -64,6 +64,9 @@ NSTimeInterval const kBUOYDefaultTimeInterval = 0;
         self.beaconInterval = kBUOYDefaultTimeInterval;
         self.beaconRegions = [NSMutableDictionary dictionary];
         self.seenBeacons = [NSMutableDictionary dictionary];
+        if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+            [self.locationManager requestAlwaysAuthorization];
+        }
     }
     
     return self;

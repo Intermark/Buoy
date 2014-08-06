@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'Buoy'
-  s.version      = '0.0.14'
+  s.version      = '0.0.15'
   s.summary      = 'An iBeacon Listener/Manager class to make your life simpler, matey.'
   s.author = {
     'Ben Gordon' => 'brgordon@ua.edu'
