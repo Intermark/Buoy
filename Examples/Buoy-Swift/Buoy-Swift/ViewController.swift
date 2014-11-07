@@ -29,13 +29,13 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         // Set Up
-        var uuid = NSUUID(UUIDString: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6")
+        var uuid = NSUUID(UUIDString: "00000000-0000-0000-0000-000000000000")
         
         // Listen
-        self.listenForBeaconsWithUUID(uuid)
+        //self.listenForBeaconsWithUUID(uuid!)
         
         // Transmit
-       // self.transmitAsBeaconWithUUID(uuid)
+        self.transmitAsBeaconWithUUID(uuid!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,11 +60,11 @@ class ViewController: UIViewController {
     
     // Listening Notifications
     func registerNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector.convertFromStringLiteral("handleNotification:"), name: kBUOYDidFindBeaconNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleNotification:", name: kBUOYDidFindBeaconNotification, object: nil)
     }
     
     func handleNotification(note: NSNotification) {
-        if let b = note.userInfo[kBUOYBeacon] as? CLBeacon {
+        if let b = note.userInfo![kBUOYBeacon] as? CLBeacon {
             println(b.buoyIdentifier())
         }
     }

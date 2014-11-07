@@ -30,14 +30,14 @@ var listener: BUOYListener? = nil
 class BUOYListener: NSObject, CLLocationManagerDelegate {
     // Properties
     var manager: CLLocationManager
-    var beaconRegions: Dictionary<String, CLBeaconRegion>
+    var beaconRegions: [String : CLBeaconRegion]
     var interval: NSTimeInterval? = 0
-    var seenBeacons: Dictionary<String, NSDate>
+    var seenBeacons: [String:NSDate]
     
-    
+
     // Singleton Listener
     class func defaultListener() -> BUOYListener {
-        if !listener {
+        if (listener == nil) {
             listener = BUOYListener()
         }
         return listener!
@@ -45,7 +45,7 @@ class BUOYListener: NSObject, CLLocationManagerDelegate {
     
 
     // Init
-    init(){
+    override init(){
         self.manager = CLLocationManager()
         self.beaconRegions = Dictionary()
         self.seenBeacons = Dictionary()
@@ -56,9 +56,9 @@ class BUOYListener: NSObject, CLLocationManagerDelegate {
     
     
     // Start Listening
-    func listenForBeacons(uuids: Array<NSUUID>) {
+    func listenForBeacons(uuids: [NSUUID]) {
         for uuid in uuids {
-            var region = CLBeaconRegion(proximityUUID: uuid, identifier: kBUOYRegionIdentifier)
+            var region = CLBeaconRegion(proximityUUID: uuid, identifier: "\(kBUOYRegionIdentifier)-\(uuid)")
             region.notifyEntryStateOnDisplay = true
             self.manager.startMonitoringForRegion(region)
             self.manager.requestStateForRegion(region)
@@ -66,7 +66,7 @@ class BUOYListener: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func listenForBeacons(uuids: Array<NSUUID>, interval: NSTimeInterval) {
+    func listenForBeacons(uuids: [NSUUID], interval: NSTimeInterval) {
         self.interval = interval
         self.listenForBeacons(uuids)
     }

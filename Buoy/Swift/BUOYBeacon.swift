@@ -34,7 +34,7 @@ class BUOYBeacon: NSObject, CBPeripheralManagerDelegate {
     
     // Singleton Beacon
     class func deviceBeacon() -> BUOYBeacon {
-        if !transmitter {
+        if (transmitter == nil) {
             transmitter = BUOYBeacon()
         }
         
@@ -43,7 +43,7 @@ class BUOYBeacon: NSObject, CBPeripheralManagerDelegate {
     
     
     // Init
-    init()  {
+    override init()  {
         self.manager = CBPeripheralManager()
         self.beaconRegion = CLBeaconRegion()
         super.init()
@@ -52,7 +52,7 @@ class BUOYBeacon: NSObject, CBPeripheralManagerDelegate {
     
     // Set Up
     func setUpBeacon(proximityUUID uuid:NSUUID?, major M:CLBeaconMajorValue?, minor m:CLBeaconMinorValue?, identifier i:String?) {
-        self.beaconRegion = CLBeaconRegion(proximityUUID: uuid ? uuid : NSUUID(), major: M!, minor: m!, identifier: i ? i : kBUOYDeviceBeaconIdentifier)
+        self.beaconRegion = CLBeaconRegion(proximityUUID: uuid != nil ? uuid : NSUUID(), major: M!, minor: m!, identifier: i != nil ? i : kBUOYDeviceBeaconIdentifier)
     }
     
     
