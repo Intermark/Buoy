@@ -119,17 +119,17 @@ class BUOYListener: NSObject, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
         for beacon : AnyObject in beacons {
             if beacon is CLBeacon {
-                self.sendNotification(beacon as CLBeacon)
+                self.sendNotification(beacon as! CLBeacon)
             }
         }
     }
     
     func locationManager(manager: CLLocationManager!, didDetermineState state: CLRegionState, forRegion region: CLRegion!) {
         if region.isKindOfClass(CLBeaconRegion.self) && state == CLRegionState.Inside {
-            self.manager.startRangingBeaconsInRegion(region as CLBeaconRegion)
+            self.manager.startRangingBeaconsInRegion(region as! CLBeaconRegion)
         }
         else if region.isKindOfClass(CLBeaconRegion.self) && state == CLRegionState.Outside {
-            self.manager.stopRangingBeaconsInRegion(region as CLBeaconRegion)
+            self.manager.stopRangingBeaconsInRegion(region as! CLBeaconRegion)
         }
     }
 }

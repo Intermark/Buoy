@@ -69,7 +69,8 @@ class BUOYBeacon: NSObject, CBPeripheralManagerDelegate {
     // CBPeripheralManager Delegate
     func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!) {
         if peripheral.state == CBPeripheralManagerState.PoweredOn {
-            self.manager.startAdvertising(self.beaconRegion.peripheralDataWithMeasuredPower(nil))
+            let peripheralData = self.beaconRegion.peripheralDataWithMeasuredPower(nil) as [NSObject : AnyObject]!;
+            self.manager.startAdvertising(peripheralData)
         }
         else if peripheral.state == CBPeripheralManagerState.PoweredOff {
             self.manager.stopAdvertising()
