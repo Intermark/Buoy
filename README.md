@@ -12,7 +12,7 @@ Now written in [Swift](#swift) as well!
 
 ## Instsallation
 
-Use [Cocoapods](http://www.cocoapods.org) to install Buoy.
+Use [CocoaPods](http://www.cocoapods.org) to install Buoy.
 
 `pod 'Buoy'`
 
