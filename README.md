@@ -10,7 +10,7 @@ Now written in [Swift](#swift) as well!
 
 * iOS 7+
 
-## Instsallation
+## Installation
 
 Use [CocoaPods](http://www.cocoapods.org) to install Buoy.
 
